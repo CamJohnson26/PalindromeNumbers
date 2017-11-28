@@ -40,7 +40,7 @@ class PalindromeNumbers():
             Returns whether the given string is a palindrome
         """
         le = len(s)
-        if le == 1:
+        if le <= 1:
             return True
         for i, v in enumerate(s):
             if i >= (le/2):
@@ -69,7 +69,7 @@ class PalindromeNumbers():
 
 if __name__ == "__main__":
     for i, n in enumerate(PalindromeNumbers.find_palindromes(1000)):
-        print("{0}, {1}".format(i + 1, n))
+        print("{0}, {1}: {2}".format(i + 1, n, PalindromeNumbers.convert_num_to_base(i+1, n)))
 
 
 import unittest
@@ -102,27 +102,27 @@ class TestPalindrome(unittest.TestCase):
         self.assertEqual(f(1036, 13), [6, 1, 9])
         self.assertEqual(f(18974, 755), [25, 99])
  
-    def is_palindrome(self):
+    def test_is_palindrome(self):
         f = PalindromeNumbers.is_palindrome
 
         # Test empty string
-        self.assertEqual("", True)
+        self.assertEqual(f(""), True)
 
         # Test duplicates
-        self.assertEqual("001", False)
-        self.assertEqual("AABBCCC", False)
-        self.assertEqual("ZZZZZZZZZ", True)
-        self.assertEqual("ZZZZZZZZ", True)
+        self.assertEqual(f("001"), False)
+        self.assertEqual(f("AABBCCC"), False)
+        self.assertEqual(f("ZZZZZZZZZ"), True)
+        self.assertEqual(f("ZZZZZZZZ"), True)
 
         # Test case
-        self.assertEqual("AABBaa", False)
-        self.assertEqual("AABBAA", True)
+        self.assertEqual(f("AABBaa"), False)
+        self.assertEqual(f("AABBAA"), True)
 
-    def find_palindromes(self):
+    def test_find_palindromes(self):
         f = PalindromeNumbers.find_palindromes
 
         # Test subset
-        self.assertEqual(f(10), [])
+        self.assertEqual(f(10), [2, 3, 2, 3, 2, 5, 2, 3, 2, 3])
  
 if __name__ == '__main__':
     unittest.main()
