@@ -69,7 +69,7 @@ class PalindromeNumbers():
 
 if __name__ == "__main__":
     for i, n in enumerate(PalindromeNumbers.find_palindromes(1000)):
-        print("{0}, {1}: {2}".format(i + 1, n, PalindromeNumbers.convert_num_to_base(i+1, n)))
+        print("{0}, {1}".format(i + 1, n))
 
 
 import unittest
